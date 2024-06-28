@@ -27,6 +27,6 @@ cd "$PROJECT_DIRECTORY"
 BVH_PREFIX="${BVH_PREFIX:-"./data/DanceDB/"}"
 SAVE_PATH="${SAVE_PATH:-"./results"}"
 
-echo --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}"
-python train.py --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}"
+echo  --device="cuda" --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}"
+python train.py  --device="cuda" --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}" 
 
