@@ -24,6 +24,15 @@ def main():
     cpu_str, gpu_str = get_device_info()
     print(f'CPU :{cpu_str}\nGPU: {gpu_str}')
 
+    if torch.cuda.is_available():
+        print(torch.cuda.get_device_name(0))
+        print('Memory Usage:')
+        print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+        print('Cached:   ', round(torch.cuda.memory_reserved(0)/1024**3,1), 'GB')
+        print(f'Device: {device}')
+    else:
+        raise ValueError("NO CUDA")
+
     parser.save(pjoin(args.save_path, 'args.txt'))
     os.makedirs(args.save_path, exist_ok=True)
 
