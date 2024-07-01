@@ -40,7 +40,8 @@ def main():
         motion_data = MotionData(pjoin(args.bvh_prefix, f'{args.bvh_name}.bvh'),
                                  padding=args.skeleton_aware, use_velo=args.use_velo, repr=args.repr,
                                  contact=args.contact, keep_y_pos=args.keep_y_pos,
-                                 joint_reduction=args.joint_reduction)
+                                 joint_reduction=args.joint_reduction,
+                                 start=args.start, end=args.end)
         multiple_data = [motion_data]
     else:
         multiple_data = load_multiple_dataset(prefix=args.bvh_prefix, name_list=pjoin(args.bvh_prefix, args.bvh_name),

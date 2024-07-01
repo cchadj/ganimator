@@ -1,3 +1,4 @@
+from typing import Optional
 import torch
 import bvh.bvh_io as bvh_io
 import numpy as np
@@ -93,8 +94,8 @@ class Skeleton:
 
 
 class BVH_file:
-    def __init__(self, file_path, no_scale=False, requires_contact=False, joint_reduction=True):
-        self.anim = bvh_io.load(file_path)
+    def __init__(self, file_path, no_scale=False, requires_contact=False, joint_reduction=True, start: Optional[int] = None, end: Optional[int] = None):
+        self.anim = bvh_io.load(file_path, start=start, end=end)
         self._names = self.anim.names
         self.frametime = self.anim.frametime
         self.skeleton = Skeleton(self.anim.names, self.anim.parent, self.anim.offsets, joint_reduction)
