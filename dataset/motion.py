@@ -1,5 +1,6 @@
 import os
 from os.path import join as pjoin
+from typing import Optional
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -11,9 +12,11 @@ from bvh.bvh_writer import WriterWrapper
 class MotionData:
     def __init__(self, filename, repr='quat', padding=False,
                  use_velo=False, no_scale=False, contact=False, keep_y_pos=False,
-                 joint_reduction=True):
+                 joint_reduction=True,
+                 start: Optional[int] = None, end: Optional[int] = None):
         self.bvh_file = BVH_file(filename, no_scale, requires_contact=contact,
-                                 joint_reduction=joint_reduction)
+                                 joint_reduction=joint_reduction,
+                                 start=start, end=end)
         self.contact = contact
         self.filename = filename
         self.raw_motion = self.bvh_file.to_tensor(repr=repr)

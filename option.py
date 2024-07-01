@@ -96,6 +96,8 @@ class TrainOptionParser(OptionParser):
         self.parser.add_argument('--full_zstar', type=int, default=1)
         self.parser.add_argument('--correct_zstar_gen', type=int, default=0)
         self.parser.add_argument('--use_6d_fk', type=int, default=0)
+        self.parser.add_argument('--start', type=int, default=None)
+        self.parser.add_argument('--end', type=int, default=None)
 
     @staticmethod
     def checker(args):
