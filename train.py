@@ -1,5 +1,6 @@
 import os
 import sys
+from pathlib import Path
 import torch
 from dataset.motion import MotionData, load_multiple_dataset
 from models import create_model, create_conditional_model, get_group_list
@@ -11,7 +12,7 @@ import time
 from torch.utils.tensorboard import SummaryWriter
 from loss_recorder import LossRecorder
 from demo import load_all_from_path
-from utils import get_device_info
+from utils import get_device_info, prepend_timestamp_to_path
 
 
 def main():
@@ -34,6 +35,7 @@ def main():
         raise ValueError("NO CUDA")
 
     parser.save(pjoin(args.save_path, 'args.txt'))
+    args.save_path = prepend_timestamp_to_path(args.save_path)
     os.makedirs(args.save_path, exist_ok=True)
 
     if not args.multiple_sequences:

@@ -1,3 +1,9 @@
+from os import PathLike
+import datetime
+from typing import Union
+from pathlib import Path
+
+
 def get_gpu_info():
     try:
         import GPUtil
@@ -18,3 +24,15 @@ def get_cpu_info():
 
 def get_device_info():
     return get_cpu_info(), get_gpu_info()
+
+
+def prepend_timestamp_to_path(path: Union[PathLike, str]) -> str:
+    path = Path(path)
+    path = path.parent / f"{create_timestamp()}-{path.stem}"
+    return str(path)
+
+
+def create_timestamp() -> str:
+    now = datetime.datetime.now()
+    timestamp = now.strftime('%y%m%d-%H%M')
+    return timestamp
