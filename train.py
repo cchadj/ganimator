@@ -45,6 +45,10 @@ def main():
                                  joint_reduction=args.joint_reduction,
                                  start=args.start, end=args.end)
         multiple_data = [motion_data]
+
+        ground_truth_save_path = Path(args.save_path) / f"{args.bvh_name}-ground_truth.bvh"
+        real = motion_data.sample(size=len(motion_data), slerp=args.slerp).to(device)
+        motion_data.write(str(ground_truth_save_path), real)
     else:
         multiple_data = load_multiple_dataset(prefix=args.bvh_prefix, name_list=pjoin(args.bvh_prefix, args.bvh_name),
                                               padding=args.skeleton_aware, use_velo=args.use_velo, repr=args.repr,
