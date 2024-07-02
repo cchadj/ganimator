@@ -94,7 +94,7 @@ class Skeleton:
 
 
 class BVH_file:
-    def __init__(self, file_path, no_scale=False, requires_contact=False, joint_reduction=True, start: Optional[int] = None, end: Optional[int] = None):
+    def __init__(self, file_path, no_scale=False, no_blender_scale=True, requires_contact=False, joint_reduction=True, start: Optional[int] = None, end: Optional[int] = None):
         self.anim = bvh_io.load(file_path, start=start, end=end)
         self._names = self.anim.names
         self.frametime = self.anim.frametime
@@ -111,7 +111,7 @@ class BVH_file:
             self.anim.rotations = self.anim.rotations[::2]
 
         # Scale by 1/100 if it's raw exported bvh from blender
-        if not no_scale and self.skeleton.offsets[0, 1] > 10:
+        if not no_scale and not no_blender_scale and self.skeleton.offsets[0, 1] > 10:
             self.scale(1. / 100)
         # Scale by 0.14 for Xia's dataset
         if not no_scale and self.skeleton.skeleton_type == 3:
