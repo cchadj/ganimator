@@ -24,9 +24,12 @@ conda activate "$PROJECT_CONDA_ENV"
 
 cd "$PROJECT_DIRECTORY"
 
+START_OPT=${START:+--start=${START}}
+END_OPT=${END:+--end=${END}}
+
 BVH_PREFIX="${BVH_PREFIX:-"./data/DanceDB/"}"
 SAVE_PATH="${SAVE_PATH:-"./results"}"
 
-echo  --device="cuda" --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}"
-python train.py  --device="cuda" --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}" 
+echo python train.py  --device="cuda" --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}" "${START_OPT}" "${END_OPT}"
+python train.py  --device="cuda" --bvh_prefix="${BVH_PREFIX}" --bvh_name="${BVH_NAME}" --save_path="${SAVE_PATH}" "${START_OPT}" "${END_OPT}"
 
