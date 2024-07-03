@@ -12,7 +12,7 @@ import time
 from torch.utils.tensorboard import SummaryWriter
 from loss_recorder import LossRecorder
 from demo import load_all_from_path
-from utils import get_device_info, prepend_timestamp_to_path
+from utils import get_device_info
 
 
 def main():
@@ -34,9 +34,8 @@ def main():
     else:
         raise ValueError("NO CUDA")
 
-    parser.save(pjoin(args.save_path, 'args.txt'))
-    args.save_path = prepend_timestamp_to_path(args.save_path)
     os.makedirs(args.save_path, exist_ok=True)
+    parser.save(pjoin(args.save_path, 'args.txt'))
 
     if not args.multiple_sequences:
         motion_data = MotionData(pjoin(args.bvh_prefix, f'{args.bvh_name}.bvh'),
