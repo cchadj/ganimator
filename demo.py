@@ -111,7 +111,7 @@ def main():
         conds_rec = None
 
     print('levels:', lengths)
-    save_path = pjoin(args.save_path, 'bvh')
+    save_path = pjoin(args.save_path, test_args.bvh_dir)
     os.makedirs(save_path, exist_ok=True)
 
     base_id = 0
