@@ -1,3 +1,6 @@
+data/DanceDB-bvhs/
+data/DanceDB/
+pre-trained/
 scripts/*.out
 scripts/*.err
 
