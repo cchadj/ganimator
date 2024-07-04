@@ -1,0 +1,5 @@
+BVH_PREFIX,BVH_NAME,SAVE_PATH,START,END
+./data/DanceDB-bvhs/greek-and-cypriot-dances/,ANDREAS_Poustsenko,res-andreas-poustsenko,10000,13000
+./data/DanceDB-bvhs/greek-and-cypriot-dances/,Clio_Podaraki,res-clio-podaraki,2500,5000
+./data/DanceDB-bvhs/greek-and-cypriot-dances/,Stefanos_Theodorou_1os_Antikristos_Katrsilamas_v1,res-stefanos-theodorou-1os-antikristos-katrsilamas,3000,5500
+
